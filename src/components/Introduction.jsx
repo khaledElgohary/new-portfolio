@@ -47,7 +47,7 @@ export default function Introduction(props) {
                                         Few things about <span className='text-web-m'>me</span>
                                     </h1>
                                 <h3 className="lg:text-2xl md:text-xl sm:text-md text-sm  font-semibold tracking-tight  text-justify">
-                                    I&apos;m Khaled, a fresh grad software developer based in Winnipeg(Canada), specializing in full-stack development and data analysis.
+                                    I&apos;m Khaled, a Computer Science fresh grad based in Winnipeg(Canada), specializing in full-stack development and data analysis.
                                     Currently working pro bono at a startup called <span className='text-web-m'><a href='https://www.caremate.ai/' target='_blank'>Caremate</a></span> as a frontend developer.
                                 </h3>
 
@@ -58,7 +58,7 @@ export default function Introduction(props) {
                                 </h3>
 
                                 <h3 className="lg:text-2xl md:text-xl sm:text-md text-sm  font-semibold tracking-tight text-justify">
-                                    Currently I&apos;m looking for a full-time position as data analysis or software developer, and looking forward to putting my foot in the door
+                                    Currently I&apos;m looking for a full-time position as Data Analyst or Software Developer, and looking forward to putting my foot in the door
                                     and working on products and solutions that is used daily. Feel free to <a href='#CONTACT' className='text-web-m'>contact me</a> if you&apos;d
                                     like to discuss potential opportunities.
                                 </h3>

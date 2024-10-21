@@ -30,7 +30,7 @@ export default function Projectscard({title, skills, tooltip,description,project
                                                             <TooltipTrigger>
                                                                 <img key={index} src={url} width={30} />
                                                             </TooltipTrigger>
-                                                            <TooltipContent>{tooltip[index]}</TooltipContent>
+                                                            <TooltipContent><p>{ tooltip[index] }</p></TooltipContent>
                                                         </Tooltip>
                                                     ))}
                                                 </div>

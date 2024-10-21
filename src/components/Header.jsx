@@ -7,7 +7,7 @@ export default function Header() {
     const [activeHref, setActiveHref] = useState('#ABOUT');
     return (
         <>
-            <div className='flex flex-row justify-between bg-transparent backdrop-blur-lg'>
+            <div className='flex flex-row justify-between bg-transparent backdrop-blur-lg sticky top-0'>
             <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight text-white py-5 px-6
             ">
                 KE.

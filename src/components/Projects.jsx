@@ -6,10 +6,10 @@ export default function Projects(props) {
         <>
             {props.condition === "#PROJECTS" ? (
                 <div className="flex flex-col">
-                    <div className="ml-6 mt-16 gap-6 mr-16 max-w-screen-md text-white font-extrabold tracking-tight lg:text-5xl text-4xl">
+                    <div className="ml-6 mt-10 gap-6 max-w-screen-md text-white font-extrabold tracking-tight lg:text-5xl text-4xl">
                         <h1> Feel free to checkout my <a href="https://github.com/khaledElgohary" target="_blank" className="text-web-m">Github</a></h1>
                     </div>
-                    <div className="flex flex-wrap justify-center mr-4">
+                    <div className="flex flex-wrap justify-center mr-4 py-3 px-4">
                         <Projectscard title='High School Hub 🏫' skills={['git-icon.svg','android-icon.svg', 'mysql-icon.svg','java.svg']} tooltip={['Git','Android Studio', 'SQL', 'Java']} description='Android app that lets you connect with long lost high school friends and staff, without the traditional chat feature in common social media apps.' projectLink='https://github.com/khaledElgohary/high-school-hub' />
                         <Projectscard title='Elopie website' skills={['python.svg','git-icon.svg','selenium.svg','html-5.svg','css-3.svg','mysql-icon.svg']} tooltip={['Python','Git','Selenium','HTML','CSS','SQL']} description='Elopie website scrapes data from the uofm registration website aurora, to find courses eligible for transfer credits across all faculties.' projectLink='https://github.com/khaledElgohary/Elopie-wesbite' />
                         <Projectscard title='Portfolio website' skills={['react.svg','javascript.svg','tailwindcss-icon.svg','vite.svg']} tooltip={['React', 'JavaScript','TailwindCSS','Vite']} description='This is the website you are currently viewing, and it is the second portfolio website I have designed and deployed.' projectLink="https://khaledelgohary.dev/" />
