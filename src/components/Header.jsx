@@ -24,7 +24,7 @@ export default function Header() {
 
     return (
         <>
-            <div className='flex flex-col w-full bg-header-back sticky top-0 z-10'>
+            <div className='flex flex-col w-full bg-header-back backdrop-blur-lg sticky top-0 z-10'>
                 <div className='flex flex-row justify-between items-center'>
                     <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight text-white py-5 px-6 opacity-100">
                         KE.
