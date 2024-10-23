@@ -3,24 +3,30 @@ import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
-    TooltipTrigger,
+    TooltipTrigger
 } from "@/components/ui/tooltip"
   
 export default function SkillList({ skills, tooltip }) {
     return (
-        <div className="flex flex-wrap justify-center items-center py-8 gap-9 ">
+        <div className="flex flex-wrap justify-center items-center py-8 gap-3 lg:gap-8 p-12">
             {skills.map((skill, index) => (
-                <div key={index} className="flex flex-row items-center justify-center " >
-                    <TooltipProvider>
-                        <Tooltip>
+                <div key={index} className="flex flex-row items-center justify-center hover:scale-110" >
+                    <div className="bg-slate-800/50 rounded-xl p-4 transition-all duration-300 
+                                  transform hover:scale-105 hover:bg-slate-700/50 
+                                  flex items-center justify-center
+                                  shadow-lg hover:shadow-xl">
+                        
+                        <TooltipProvider className="">
+                        <Tooltip delayDuration={10} >
                             <TooltipTrigger>
                                 <img src={skill} width={65} alt={tooltip[index]} />
                             </TooltipTrigger>
-                            <TooltipContent>
+                                <TooltipContent className="my-5">
                                 <p className="text-center text-white text-sm">{tooltip[index]}</p>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>
+                    </div>
                 </div>
             ))}
         </div>

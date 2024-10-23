@@ -5,21 +5,30 @@ export default function Skills(props) {
     return (
         <>
             {props.condition === "#SKILLS" ? (
-                <div className="flex flex-col">
-                    <h1 className="lg:text-2xl text-xl ml-6 mt-10 text-white font-extrabold">Programming & Markup Languages</h1>
-                    <hr className="my-3 w-1/3 border-web-m border-2"/>
-                    <SkillList skills={['python.svg','java.svg','javascript.svg', 'typescript-icon.svg','C.svg','c-plusplus.svg','html-5.svg','css-3.svg']} tooltip={['TailwindCSS','Java','JavaScript', 'TypeScript','C','C++','HTML','CSS']}/>
-                    <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">Libraries & Frameworks</h1>
-                    <hr className="my-3 w-1/3 border-web-m border-2"/>
-                    <SkillList skills={['react.svg', 'angular-icon.svg', 'nextjs-icon.svg', 'jquery.svg', 'tailwindcss-icon.svg', 'flask.svg']} tooltip={['React', 'Angular', 'NextJs', 'JQuery', 'TailwindCSS', 'Flask']} />
-                    <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">Testing & Tools</h1>
-                    <hr className="my-3 w-1/3 border-web-m border-2"/>
-                    <SkillList skills={['selenium.svg', 'cypress-icon.svg', 'JUnit.svg', 'git-icon.svg', 'jira.svg', 'docker-icon.svg', 'bash-icon.svg']} tooltip={['Selenium', 'Cypress', 'JUnit', 'Git', 'Jira', 'Docker', 'Bash']} />
-                    <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">Databases & Cloud Technologies</h1>
-                    <hr className="my-3 w-1/3 border-web-m border-2"/>
-                    <SkillList skills={['mysql-icon.svg','postgresql.svg','mongodb-icon.svg','neo4j.svg','microsoft-azure.svg','aws.svg']} tooltip={['SQL','PostgreSQL','MongoDB','Neo4j','Microsoft Azure','AWS']} />
+                <div className="grid lg:grid-cols-2 mt-10 gap-10 z-0">
+                    <div className="flex flex-col items-center">
+                        <h1 className="lg:text-2xl text-xl ml-6  text-white font-extrabold">Software Development</h1>
+                        <hr className="my-3 w-1/3 border-web-m border-2"/>
+                        <SkillList skills={['python.svg','java.svg','C.svg','c-plusplus.svg','android-icon.svg', 'JUnit.svg', 'docker-icon.svg','git-icon.svg']} tooltip={['Python','Java','C','C++','Android Studio', 'JUnit', 'Docker','Git']}/>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">Web Development</h1>
+                        <hr className="my-3 w-1/3 border-web-m border-2"/>
+                        <SkillList skills={['javascript.svg','typescript-icon.svg', 'html-5.svg', 'css-3.svg','react.svg', 'angular-icon.svg', 'nextjs-icon.svg', 'jquery.svg', 'tailwindcss-icon.svg', 'flask.svg']} tooltip={['JavaScript', 'TypeScript', 'HTML', 'CSS', 'React', 'Angular', 'Next.js','JQuery','TailwindCSS','Flask']} />
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">Data Analytics</h1>
+                        <hr className="my-3 w-1/3 border-web-m border-2"/>
+                        <SkillList skills={['RStudio.svg','numpy.svg','pandas-icon.svg','matplotlib-icon.svg','seaborn-icon.svg','microsoft-power-bi.svg','tableau-icon.svg','SSIS.svg','databricks.svg']} tooltip={['RStudio', 'Numpy', 'Pandas', 'Matplotlib', 'Seaborn', 'PowerBI', 'Tableau','SSIS', 'Databricks']} />
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">Databases, Tools & Technologies</h1>
+                        <hr className="my-3 w-1/3 border-web-m border-2"/>
+                        <SkillList skills={['aws.svg','microsoft-azure.svg','jira.svg', 'linear-icon.svg','bash-icon.svg','selenium.svg','cypress-icon.svg','mysql-icon.svg','postgresql.svg','neo4j.svg']} tooltip={['SQL','PostgreSQL','MongoDB','Neo4j','Microsoft Azure','AWS']} />
+                    </div>
 
                 </div>
+                
             ): (
                 <></>        
             )}

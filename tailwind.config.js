@@ -12,9 +12,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        "web-m": "#d946ef",
+        "web-m": "#38BDF8",
         "web-back": "#18181b",
-        "header-back": "#27272a",
+        "header-back": "rgba(24, 24, 27, 0.75)",
+
       },
     },
   },

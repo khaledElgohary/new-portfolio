@@ -1,8 +1,9 @@
 import {motion} from 'framer-motion'
 import { Button } from '@/components/ui/button';
 import { ChevronRightIcon } from "@radix-ui/react-icons"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
 
 export default function Introduction(props) { 
 
@@ -11,6 +12,11 @@ export default function Introduction(props) {
     const handleView = () => { 
         setView(!view);
     }
+
+    useEffect(() => { 
+        setView(true);
+    }, [props.condition])
+
 
     return (
             props.condition === "#ABOUT" ? (
@@ -32,7 +38,7 @@ export default function Introduction(props) {
                             <h1>A Software <span className='text-web-m'>Engineer</span> & Web <span className='text-web-m'>Developer</span></h1> 
                     </div>
 
-                    <div className='flex flex-col items-center gap-10 mt-72 '>
+                    <div className='flex flex-col items-center gap-10 mt-72 sm:mt-96'>
                         <h1 className='text-xl '>Click to Discover More</h1>
                         <Button className="bg-transparent"variant="outline" size="icon" onClick={handleView}>
                             <ChevronRightIcon className="h-5 w-5" />
@@ -41,23 +47,23 @@ export default function Introduction(props) {
                 </>
             ): (
                     <>
-                        <div className='flex flex-wrap sm:gap-12'>
+                        <div className='flex flex-wrap sm:gap-12 justify-between'>
                             <div className='flex flex-col ml-12 mt-16 gap-6 mr-16 max-w-screen-md '>
                                     <h1>
                                         Few things about <span className='text-web-m'>me</span>
                                     </h1>
-                                <h3 className="lg:text-2xl md:text-xl sm:text-md text-sm  font-semibold tracking-tight  text-justify">
+                                <h3 className="lg:text-2xl text-lg font-semibold tracking-tight ">
                                     I&apos;m Khaled, a Computer Science fresh grad based in Winnipeg(Canada), specializing in full-stack development and data analysis.
                                     Currently working pro bono at a startup called <span className='text-web-m'><a href='https://www.caremate.ai/' target='_blank'>Caremate</a></span> as a frontend developer.
                                 </h3>
 
-                                <h3 className="lg:text-2xl md:text-xl sm:text-md text-sm  font-semibold tracking-tight  text-justify">
+                                <h3 className="lg:text-2xl text-lg  font-semibold tracking-tight ">
                                     I just graduated from the University of Manitoba with a BSc, majoring in computer science and minoring in mathematics.
                                     During university I discovered that I&apos;m passionate about anything tech related. I love doing my magic on computer and
                                     then seeing stuff come to life.
                                 </h3>
 
-                                <h3 className="lg:text-2xl md:text-xl sm:text-md text-sm  font-semibold tracking-tight text-justify">
+                                <h3 className="lg:text-2xl text-lg font-semibold tracking-tight">
                                     Currently I&apos;m looking for a full-time position as Data Analyst or Software Developer, and looking forward to putting my foot in the door
                                     and working on products and solutions that is used daily. Feel free to <a href='#CONTACT' className='text-web-m'>contact me</a> if you&apos;d
                                     like to discuss potential opportunities.
@@ -65,11 +71,11 @@ export default function Introduction(props) {
                             </div>
 
                             <div className='max-w-screen-md rounded'>
-                                <img src='photo.JPG' className='mt-16 rounded-ss-full rounded-ee-full p-5'></img>
+                                <img src='photo.JPG' className='mt-16 rounded-ss-full rounded-se-full rounded-es-full rounded-ee-full p-5 mr-20'></img>
                             </div>
                         </div>
 
-                        <div className='flex flex-col items-center gap-10 py-12'>
+                        <div className='flex flex-col items-center gap-10 py-12 mt-0 sm:mt-20'>
                             <h1 className='text-xl '>Click to Return</h1>
                             <Button className="bg-transparent"variant="outline" size="icon" onClick={handleView}>
                                 <ChevronRightIcon className="h-5 w-5" />
