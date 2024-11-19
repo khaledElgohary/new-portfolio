@@ -11,8 +11,8 @@ export default function SkillList({ skills, tooltip }) {
         <div className="flex flex-wrap justify-center items-center py-8 gap-3 lg:gap-8 p-12">
             {skills.map((skill, index) => (
                 <div key={index} className="flex flex-row items-center justify-center hover:scale-110" >
-                    <div className="bg-slate-800/50 rounded-xl p-4 transition-all duration-300 
-                                  transform hover:scale-105 hover:bg-slate-700/50 
+                    <div className="bg-white rounded-xl p-4 transition-all duration-300 
+                                  transform hover:scale-105 hover:bg-web-m 
                                   flex items-center justify-center
                                   shadow-lg hover:shadow-xl">
                         

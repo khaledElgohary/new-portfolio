@@ -54,12 +54,12 @@ export default function Introduction(props) {
                                     </h1>
                                 <h3 className="lg:text-2xl text-lg font-semibold tracking-tight ">
                                     I&apos;m Khaled, a Computer Science fresh grad based in Winnipeg(Canada), specializing in full-stack development and data analysis.
-                                    Currently working pro bono at a startup called <span className='text-web-m'><a href='https://www.caremate.ai/' target='_blank'>Caremate</a></span> as a frontend developer.
+                                    Currently working at a startup called <span className='text-web-m'><a href='https://www.caremate.ai/' target='_blank'>Caremate</a></span> as a frontend developer.
                                 </h3>
 
                                 <h3 className="lg:text-2xl text-lg  font-semibold tracking-tight ">
                                     I just graduated from the University of Manitoba with a BSc, majoring in computer science and minoring in mathematics.
-                                    During university I discovered that I&apos;m passionate about anything tech related. I love doing my magic on computer and
+                                    During university, I discovered that I&apos;m passionate about anything tech related. I love doing my magic on computers and
                                     then seeing stuff come to life.
                                 </h3>
 

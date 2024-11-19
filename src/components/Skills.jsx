@@ -24,7 +24,7 @@ export default function Skills(props) {
                     <div className="flex flex-col items-center">
                         <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">Databases, Tools & Technologies</h1>
                         <hr className="my-3 w-1/3 border-web-m border-2"/>
-                        <SkillList skills={['aws.svg','microsoft-azure.svg','jira.svg', 'linear-icon.svg','bash-icon.svg','selenium.svg','cypress-icon.svg','mysql-icon.svg','postgresql.svg','neo4j.svg']} tooltip={['SQL','PostgreSQL','MongoDB','Neo4j','Microsoft Azure','AWS']} />
+                        <SkillList skills={['aws.svg','microsoft-azure.svg','jira.svg', 'linear-icon.svg','bash-icon.svg','selenium.svg','cypress-icon.svg','mysql-icon.svg','postgresql.svg','neo4j.svg']} tooltip={['AWS','Azure', 'Jira', 'Linear', 'Bash', 'Selenium', 'Cypress', 'SQL', 'PostgreSQL','Neo4j']} />
                     </div>
 
                 </div>
