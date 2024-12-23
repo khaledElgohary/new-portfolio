@@ -7,7 +7,7 @@ export default function Projects(props) {
             {props.condition === "#PROJECTS" ? (
                 <div className="flex flex-col">
                     <div className="ml-6 mt-10 gap-6 max-w-screen-md text-white font-extrabold tracking-tight lg:text-5xl text-4xl">
-                        <h1> Feel free to checkout my <a href="https://github.com/khaledElgohary" target="_blank" className="text-web-m">Github</a></h1>
+                        <h1> Feel free to checkout my <a href="https://github.com/khaledElgohary" target="_blank" className="text-web-m underline">Github</a></h1>
                     </div>
                     <div className="flex flex-wrap justify-center mr-4 py-3 px-4">
                         <Projectscard title='High School Hub 🏫' skills={['git-icon.svg','android-icon.svg', 'mysql-icon.svg','java.svg']} tooltip={['Git','Android Studio', 'SQL', 'Java']} description='Android app that lets you connect with long lost high school friends and staff, without the traditional chat feature in common social media apps.' projectLink='https://github.com/khaledElgohary/high-school-hub' />
