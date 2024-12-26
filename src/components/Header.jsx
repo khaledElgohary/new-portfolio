@@ -5,6 +5,7 @@ import Introduction from './Introduction';
 import Projects from './Projects';
 import Skills from './Skills';
 import Experience from './Experience';
+import Contact from './Contact';
 
 export default function Header() {
     const [activeHref, setActiveHref] = useState('#ABOUT');
@@ -90,6 +91,7 @@ export default function Header() {
                     <Projects condition={activeHref} />
                     <Skills condition={activeHref} />
                     <Experience condition={activeHref} />
+                    <Contact condition={activeHref} />
                 </div>
             </div>
         </>

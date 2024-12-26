@@ -21,7 +21,7 @@ export default function SkillList({ skills, tooltip }) {
                             <TooltipTrigger>
                                 <img src={skill} width={65} alt={tooltip[index]} />
                             </TooltipTrigger>
-                                <TooltipContent className="my-5">
+                            <TooltipContent className="my-5">
                                 <p className="text-center text-white text-sm">{tooltip[index]}</p>
                             </TooltipContent>
                         </Tooltip>
