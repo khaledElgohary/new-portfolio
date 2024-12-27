@@ -19,7 +19,7 @@ import PropTypes from "prop-types";
 export default function Projectscard({title, skills, tooltip,description,projectLink}) { 
     return (
         <div className="flex flex-wrap ml-10 mt-8">
-                        <Card className="w-80 h-auto hover:text-web-m cursor-default">
+                        <Card className="w-80 h-72 hover:text-web-m cursor-default">
                             <CardHeader>
                                 <CardTitle>{title}</CardTitle>
                                 <CardDescription>
