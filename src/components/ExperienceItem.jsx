@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Lottie from "react-lottie";
+
 export default function ExperienceItem(props) {
 
     const defaultOptions = {
