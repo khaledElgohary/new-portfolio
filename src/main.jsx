@@ -9,7 +9,8 @@ import { PostHogProvider } from 'posthog-js/react'
 
 posthog.init('phc_iQ9ZdWZL3ajz4F7LlYJ6k3U6IHNS8SbO2xjk6Qb42tA', {
   api_host:'https://us.i.posthog.com',
-  person_profiles: 'always' 
+  person_profiles: 'always',
+  capture_pageview: true
 })
 
 createRoot(document.getElementById('root')).render(
