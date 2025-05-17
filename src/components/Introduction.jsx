@@ -35,6 +35,12 @@ export default function Introduction(props) {
         },
     };
 
+
+    const handleContactClick = (e) => {
+        e.preventDefault();
+        props.setCondition("#CONTACT")
+    }
+
     return props.condition === "#ABOUT" ? (
         <div className="text-white font-extrabold tracking-tight text-3xl lg:text-5xl sm:text-3xl md:text-4xl z-10">
             <AnimatePresence mode="wait">
@@ -77,7 +83,7 @@ export default function Introduction(props) {
                             </h1>
                             <h3 className="lg:text-2xl text-lg font-semibold tracking-tight ml-3">
                                 I&apos;m a Computer Science fresh grad based in Winnipeg (Canada), specializing in Software Engineering and Web Development.
-                                Currently working at a startup called <span className='text-web-m'><a href='https://www.caremate.ai/' target='_blank'>Caremate</a></span> as a frontend developer.
+                                Currently working at a <span className='text-web-m'><a href='https://www.polysensesolutions.com/' target='_blank'>PolySense Solutions</a></span> as an operations & Technical Specialist.
                             </h3>
 
                             <h3 className="lg:text-2xl text-lg  font-semibold tracking-tight ml-3">
@@ -87,12 +93,11 @@ export default function Introduction(props) {
                             </h3>
 
                             <h3 className="lg:text-2xl text-lg font-semibold tracking-tight ml-3">
-                                Currently I&apos;m looking for a full-time position as Data Analyst or Software Developer, and looking forward to putting my foot in the door
-                                and working on products and solutions that is used daily. Feel free to <a href='#CONTACT' className='text-web-m'>contact me</a> if you&apos;d
+                                Feel free to <a href='#CONTACT' className='text-web-m' onClick={handleContactClick}>contact me</a> if you&apos;d
                                 like to discuss potential opportunities.
                             </h3>
                             <div className='flex flex-row justify-center'>
-                                <img src='/ghost.png' width={200} height={350} className='border border-transparent rounded-full' alt="Ghost"/>
+                                <img src='/ghost.png' width={200} height={350} className='border border-transparent rounded-full' alt="Ghost" />
                             </div>
                         </div>
                     </motion.div>

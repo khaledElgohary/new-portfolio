@@ -9,7 +9,6 @@ import {
 import emailjs from '@emailjs/browser';
 import { useState } from "react";
 
-// Custom Alert Component
 const CustomAlert = ({ message, type, onClose }) => (
   <motion.div
     initial={{ opacity: 0, y: -50 }}
@@ -19,12 +18,13 @@ const CustomAlert = ({ message, type, onClose }) => (
       type === 'success' 
         ? 'bg-green-500 text-white' 
         : 'bg-red-500 text-white'
-    } flex items-center gap-2 z-50 min-w-[300px] justify-center`}
+    } flex items-center gap-2 z-50 min-w-[300px] justify-between`}
   >
-    <span>{message}</span>
+    <span className="font-medium">{message}</span>
     <button 
       onClick={onClose}
-      className="ml-2 text-white hover:text-gray-200"
+      className="ml-2 text-white hover:text-gray-200 text-xl font-bold"
+      aria-label="Close alert"
     >
       ×
     </button>
@@ -98,164 +98,200 @@ export default function Contact(props) {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="flex flex-col ml-6 mt-10 gap-10"
+                    className="max-w-4xl mx-auto px-6 py-12"
                 >
-                    <h1 className="font-extrabold tracking-tight lg:text-5xl text-3xl text-white">
-                        You can check out my{" "}
-                        <a
-                            href="https://www.linkedin.com/in/khaled-elgohary2002/"
-                            className="text-web-m underline cursor-pointer"
-                        >
-                            LinkedIn
-                        </a>{" "}
-                        or drop me a message!
+                    <h1 className="font-extrabold tracking-tight text-4xl md:text-5xl text-white text-center mb-8">
+                        Let's Connect
                     </h1>
-                    <form onSubmit={sendEmail}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="flex flex-wrap justify-center gap-10"
-                        >
-                            <div className="flex flex-col items-center">
-                                <label htmlFor="nameInput" className="text-white">
-                                    Name
-                                </label>
-                                <input 
-                                    id="nameInput" 
-                                    type="text" 
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                    className="rounded-md p-2"
-                                    disabled={isSubmitting}
-                                />
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <label htmlFor="emailInput" className="text-white">
-                                    Email
-                                </label>
-                                <input 
-                                    id="emailInput" 
-                                    type="email" 
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    className="rounded-md p-2"
-                                    disabled={isSubmitting}
-                                />
-                            </div>
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="flex flex-col items-center py-5"
-                        >
-                            <label htmlFor="messageInput" className="text-white">
-                                Message
-                            </label>
-                            <textarea 
-                                id="messageInput" 
-                                className="w-1/2 rounded-md p-2" 
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                required
-                                rows={4}
-                                disabled={isSubmitting}
-                            />
-                        </motion.div>
-                        
-                        <motion.div   
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="flex flex-col items-center gap-1"
-                        >
-                            <label htmlFor="submit" className="text-white">Submit</label>
-                            <button 
-                                id="submit"
-                                type="submit" 
-                                className="bg-white text-black px-5 py-1"
-                                disabled={isSubmitting}
+                    
+                    <div className="text-center mb-12">
+                        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+                            Feel free to check out my{" "}
+                            <a
+                                href="https://www.linkedin.com/in/khaled-elgohary2002/"
+                                className="text-web-m underline font-medium hover:text-blue-400 transition-colors"
                             >
-                                {isSubmitting ? "Sending..." : "Send"}
-                            </button>
-                        </motion.div>
-                    </form>
+                                LinkedIn
+                            </a>{" "}
+                            or drop me a message below. I'm always open to new opportunities and connections!
+                        </p>
+                    </div>
+
+                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-gray-700">
+                        <form onSubmit={sendEmail} className="space-y-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                            >
+                                <div className="space-y-2">
+                                    <label htmlFor="nameInput" className="block text-white text-sm font-medium">
+                                        Name
+                                    </label>
+                                    <input 
+                                        id="nameInput" 
+                                        type="text" 
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        required
+                                        className="w-full rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/20 p-3 text-white transition-all"
+                                        placeholder="Your name"
+                                        disabled={isSubmitting}
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label htmlFor="emailInput" className="block text-white text-sm font-medium">
+                                        Email
+                                    </label>
+                                    <input 
+                                        id="emailInput" 
+                                        type="email" 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        className="w-full rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/20 p-3 text-white transition-all"
+                                        placeholder="your.email@example.com"
+                                        disabled={isSubmitting}
+                                    />
+                                </div>
+                            </motion.div>
+                            
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                                className="space-y-2"
+                            >
+                                <label htmlFor="messageInput" className="block text-white text-sm font-medium">
+                                    Message
+                                </label>
+                                <textarea 
+                                    id="messageInput" 
+                                    className="w-full rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/20 p-3 text-white transition-all" 
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    required
+                                    rows={5}
+                                    placeholder="What would you like to discuss?"
+                                    disabled={isSubmitting}
+                                />
+                            </motion.div>
+                            
+                            <motion.div   
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.6 }}
+                                className="flex justify-center pt-4"
+                            >
+                                <button 
+                                    type="submit" 
+                                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:ring-blue-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <span className="flex items-center gap-2">
+                                            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            Sending...
+                                        </span>
+                                    ) : "Send Message"}
+                                </button>
+                            </motion.div>
+                        </form>
+                    </div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 50 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="flex flex-row justify-center gap-7 items-center"
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        className="mt-12 flex flex-wrap justify-center gap-6 items-center"
                     >
-                        <TooltipProvider>
-                            <Tooltip delayDuration={10}>
-                                <TooltipTrigger>
-                                    <a
-                                        href="https://www.linkedin.com/in/khaled-elgohary2002/"
-                                        target="_blank"
-                                    >
-                                        <img
-                                            src="/linkedin-icon.svg"
-                                            width={35}
-                                            height={15}
-                                            alt=""
-                                            className="cursor-pointer hover:scale-110"
-                                        />
-                                    </a>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>LinkedIn</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
+                        <div className="flex gap-6">
+                            <TooltipProvider>
+                                <Tooltip delayDuration={10}>
+                                    <TooltipTrigger>
+                                        <a
+                                            href="https://www.linkedin.com/in/khaled-elgohary2002/"
+                                            target="_blank"
+                                            className=" p-3 rounded-full "
+                                        >
+                                            <img
+                                                src="/linkedin-icon.svg"
+                                                width={28}
+                                                height={28}
+                                                alt="LinkedIn"
+                                                className="hover:scale-110 transition-transform"
+                                            />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>LinkedIn</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
 
-                        <TooltipProvider>
-                            <Tooltip delayDuration={10}>
-                                <TooltipTrigger>
-                                    <a href="https://github.com/khaledElgohary" target="_blank">
-                                        <img
-                                            src="/github-icon2.svg"
-                                            width={35}
-                                            height={15}
-                                            alt=""
-                                            className="cursor-pointer hover:scale-110"
-                                        />
-                                    </a>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>GitHub</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
+                            <TooltipProvider>
+                                <Tooltip delayDuration={10}>
+                                    <TooltipTrigger>
+                                        <a 
+                                            href="https://github.com/khaledElgohary" 
+                                            target="_blank"
+                                            className="p-3 rounded-full "
+                                        >
+                                            <img
+                                                src="/github-icon2.svg"
+                                                width={28}
+                                                height={28}
+                                                alt="GitHub"
+                                                className="hover:scale-110 transition-transform"
+                                            />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>GitHub</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
 
-                        <TooltipProvider>
-                            <Tooltip delayDuration={10}>
-                                <TooltipTrigger>
-                                    <a href="mailto:khaled.dev1010@gmail.com">
-                                        <img
-                                            src="/google-gmail.svg"
-                                            width={35}
-                                            height={15}
-                                            alt=""
-                                            className="cursor-pointer hover:scale-110"
-                                        />
-                                    </a>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>Email</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
+                            <TooltipProvider>
+                                <Tooltip delayDuration={10}>
+                                    <TooltipTrigger>
+                                        <a 
+                                            href="mailto:khaled.dev1010@gmail.com"
+                                            className=" p-3 rounded-full transition-colors "
+                                        >
+                                            <img
+                                                src="/google-gmail.svg"
+                                                width={28}
+                                                height={28}
+                                                alt="Email"
+                                                className="hover:scale-110 transition-transform"
+                                            />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>Email</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                        </div>
 
                         <a
                             href="/resume.pdf"
                             download="Khaled_Resume.pdf"
-                            className="text-black bg-white border-transparent rounded py-2 px-2 hover:bg-gray-400"
+                            className="px-6 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2 shadow-md hover:bg-gray-300"
                         >
-                            Resume
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            Download Resume
                         </a>
                     </motion.div>
                 </motion.div>

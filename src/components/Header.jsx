@@ -87,7 +87,7 @@ export default function Header() {
                 </div>
 
                 <div className="relative z-10">
-                    <Introduction condition={activeHref} />
+                    <Introduction condition={activeHref} setCondition={setActiveHref}/>
                     <Projects condition={activeHref} />
                     <Skills condition={activeHref} />
                     <Experience condition={activeHref} />
