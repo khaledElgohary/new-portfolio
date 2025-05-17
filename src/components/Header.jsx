@@ -27,14 +27,12 @@ export default function Header() {
     return (
         <>
             <div className='relative'>
-                <div className={`sticky top-0 z-20 transition-all duration-300 ${isMenuOpen ? 'bg-header-back/80 backdrop-blur-lg' : ''}`}>
+                <div className={`fixed top-0 left-0 right-0 z-30 bg-header-back`}>
                     <div className='flex flex-col w-full bg-header-back'>
                         <div className='flex flex-row justify-between items-center'>
                             <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight text-white py-5 px-6 opacity-100">
                                 KE.
                             </h1>
-                            
-                            {/* Mobile Menu Button */}
                             <Button 
                                 variant="ghost" 
                                 className="lg:hidden px-6 hover:bg-transparent scroll-m-20"
@@ -47,7 +45,6 @@ export default function Header() {
                                 )}
                             </Button>
 
-                            {/* Desktop Navigation */}
                             <div className='hidden lg:flex py-5 px-2 scroll-m-20 text-xl font-extrabold tracking-tight'>
                                 {navItems.map((item) => (
                                     <Button
@@ -86,7 +83,7 @@ export default function Header() {
                     </div>
                 </div>
 
-                <div className="relative z-10">
+                <div className="relative z-10 py-10">
                     <Introduction condition={activeHref} setCondition={setActiveHref}/>
                     <Projects condition={activeHref} />
                     <Skills condition={activeHref} />

@@ -35,71 +35,84 @@ export default function Introduction(props) {
         },
     };
 
-
     const handleContactClick = (e) => {
         e.preventDefault();
         props.setCondition("#CONTACT")
     }
 
     return props.condition === "#ABOUT" ? (
-        <div className="text-white font-extrabold tracking-tight text-3xl lg:text-5xl sm:text-3xl md:text-4xl z-10">
+        <div className="text-white max-w-5xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
             <AnimatePresence mode="wait">
-                <motion.div
+                <motion.div 
                     initial="hidden"
                     animate="visible"
                     variants={containerVariants}
+                    className="space-y-12"
                 >
-                    <motion.div variants={itemVariants}>
-                        <div className='flex flex-row justify-start pl-12 pt-20'>
-                            <h1>Hello</h1>
-                            <motion.h1 
+                    <div className="space-y-3">
+                        <motion.div variants={itemVariants} className="flex items-center gap-3">
+                            <h1 className="text-4xl lg:text-6xl font-extrabold">Hello</h1>
+                            <motion.span 
+                                className="text-4xl lg:text-6xl"
                                 animate={{ rotateZ: [0, 14, -8, 14, -4, 10, 0, 0] }} 
                                 transition={{ duration: 2.5, delay: 0.3 }}
                             >
                                 👋🏽
-                            </motion.h1>
-                        </div>
-                    </motion.div>
+                            </motion.span>
+                        </motion.div>
 
-                    <motion.div variants={itemVariants}>
-                        <div className='pl-12'>
-                            <h1>I&apos;m Khaled,</h1>
-                        </div>
-                    </motion.div>
-                        
-                    <motion.div variants={itemVariants}>
-                        <div className='flex flex-row justify-start pl-12'>
-                            <h1>A Software <span className='text-web-m'>Engineer</span> & Web <span className='text-web-m'>Developer</span></h1> 
-                        </div>
-                    </motion.div>
+                        <motion.div variants={itemVariants}>
+                            <h1 className="text-4xl lg:text-6xl font-extrabold">I'm Khaled,</h1>
+                        </motion.div>
+                            
+                        <motion.div variants={itemVariants}>
+                            <h1 className="text-4xl lg:text-6xl font-extrabold">
+                                A Software <span className="text-web-m">Engineer</span> & Web <span className="text-web-m">Developer</span>
+                            </h1> 
+                        </motion.div>
+                    </div>
 
                     <motion.div 
                         variants={aboutVariants}
-                        className='flex lg-[flex-row] flex-wrap sm:gap-12 justify-between'
+                        className="space-y-10"
                     >
-                        <div className='flex flex-col pl-24 mt-12 gap-6 mr-16 w-full'>
-                            <h1>
-                                Few things about <span className='text-web-m'>me</span>
-                            </h1>
-                            <h3 className="lg:text-2xl text-lg font-semibold tracking-tight ml-3">
-                                I&apos;m a Computer Science fresh grad based in Winnipeg (Canada), specializing in Software Engineering and Web Development.
-                                Currently working at a <span className='text-web-m'><a href='https://www.polysensesolutions.com/' target='_blank'>PolySense Solutions</a></span> as an operations & Technical Specialist.
-                            </h3>
+                        <h2 className="text-3xl lg:text-5xl font-extrabold">
+                            Few things about <span className="text-web-m">me</span>
+                        </h2>
 
-                            <h3 className="lg:text-2xl text-lg  font-semibold tracking-tight ml-3">
-                                Graduated from the University of Manitoba in September with a BSc, majoring in computer science and minoring in mathematics.
-                                During university, I discovered that I&apos;m passionate about anything tech related. I love doing my magic on computers and
-                                then seeing stuff come to life.
-                            </h3>
+                        <div className='flex md:flex-row flex-col gap-5 px-5'>
 
-                            <h3 className="lg:text-2xl text-lg font-semibold tracking-tight ml-3">
-                                Feel free to <a href='#CONTACT' className='text-web-m' onClick={handleContactClick}>contact me</a> if you&apos;d
-                                like to discuss potential opportunities.
-                            </h3>
-                            <div className='flex flex-row justify-center'>
-                                <img src='/ghost.png' width={200} height={350} className='border border-transparent rounded-full' alt="Ghost" />
+                            <div className="space-y-6 max-w-3xl">
+                                <p className="text-lg lg:text-xl font-medium leading-relaxed">
+                                    I'm a Computer Science fresh grad based in Winnipeg (Canada), specializing in Software Engineering and Web Development.
+                                    Currently working at <span className="text-web-m"><a href="https://www.polysensesolutions.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">PolySense Solutions</a></span> as an Operations & Technical Specialist.
+                                </p>
+
+                                <p className="text-lg lg:text-xl font-medium leading-relaxed">
+                                    Graduated from the University of Manitoba in September with a BSc, majoring in computer science and minoring in mathematics.
+                                    During university, I discovered that I'm passionate about anything tech related. I love doing my magic on computers and
+                                    then seeing stuff come to life.
+                                </p>
+
+                                <p className="text-lg lg:text-xl font-medium leading-relaxed">
+                                    Feel free to <a href="#CONTACT" className="text-web-m hover:underline transition-all" onClick={handleContactClick}>contact me</a> if you'd
+                                    like to discuss potential opportunities.
+                                </p>
+                            </div>
+
+
+                            <div className="flex justify-center">
+                                <div className="relative w-48 h-48 lg:w-60 lg:h-60 overflow-hidden rounded-full border-4 border-web-m/30 shadow-xl">
+                                    <img 
+                                        src="/ghost.png" 
+                                        alt="Ghost" 
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
                             </div>
                         </div>
+                        
+                        
                     </motion.div>
                 </motion.div>
             </AnimatePresence>
@@ -111,4 +124,5 @@ export default function Introduction(props) {
 
 Introduction.propTypes = {
     condition: PropTypes.string,
+    setCondition: PropTypes.func
 };

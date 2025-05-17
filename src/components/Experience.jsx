@@ -44,7 +44,7 @@ export default function Experience(props) {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay:0.4 }}
             >
               <ExperienceItem
                 description="At Caremate, I'm working as a Frontend Developer, where I optimized React components, boosted performance, and launched five new features in collaboration with the UI/UX and development team. I played a key role in planning, code reviews, and managing merge requests, ensuring seamless integration between frontend and backend systems. One of my proudest achievements was designing and implementing a customer communication framework using Postmark for email automation, cutting feedback and issue resolution time by 60%."
@@ -58,7 +58,7 @@ export default function Experience(props) {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
             >
               <ExperienceItem
                 description="As part of my university's co-op alternative program, I collaborated with the Canadian Museum for Human Rights on an industrial project to develop a fully local speech-to-text model. The system featured live transcription, automatic language detection, and seamless language switching. I fine-tuned a BERT-based model to achieve 90% accuracy with limited data and containerized the application using Docker, reducing deployment time by over 40%."
@@ -71,7 +71,7 @@ export default function Experience(props) {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
             >
               <ExperienceItem
                 description="As a Data Analyst at the Pacific Institute for the Mathematical Sciences, I worked with R to create visualizations and analyze data patterns. I used Python and Numpy for data collection and manipulation and wrote research reports in LaTeX to present findings with precision and clarity."
