@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from "framer-motion"
+import { useEffect } from 'react';
 
 export default function Introduction(props) { 
     const containerVariants = {
@@ -39,6 +40,11 @@ export default function Introduction(props) {
         e.preventDefault();
         props.setCondition("#CONTACT")
     }
+
+
+    useEffect(() => {
+          window.scrollTo(0,0)
+      }, [props.condition])
 
     return props.condition === "#ABOUT" ? (
         <div className="text-white max-w-5xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
@@ -89,7 +95,7 @@ export default function Introduction(props) {
                                 </p>
 
                                 <p className="text-lg lg:text-xl font-medium leading-relaxed">
-                                    Graduated from the University of Manitoba in September with a BSc, majoring in computer science and minoring in mathematics.
+                                    Graduated from the University of Manitoba in September 2025 with a BSc, majoring in computer science and minoring in mathematics.
                                     During university, I discovered that I'm passionate about anything tech related. I love doing my magic on computers and
                                     then seeing stuff come to life.
                                 </p>

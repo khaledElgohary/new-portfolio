@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion"; // Import motion from framer-motion
 import SkillList from "./Skill-list";
+import { useEffect } from "react";
 
 export default function Skills(props) {
+  useEffect(() => {
+          window.scrollTo(0,0)
+      }, [props.condition])
+      
   return (
     <>
       {props.condition === "#SKILLS" ? (

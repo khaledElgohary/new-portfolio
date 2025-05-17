@@ -6,13 +6,22 @@ import museum from "./animations/museum.json";
 import research from "./animations/research.json";
 import lab from "./animations/lab.json"
 
+import { useEffect} from "react";
+
+
 export default function Experience(props) {
+  
+  useEffect(() => {
+          window.scrollTo(0,0)
+      }, [props.condition])
+
+
   return (
     <>
       {props.condition === "#EXPERIENCE" ? (
         <div className="flex flex-col justify-center align-center md:justify-normal md:ml-6 mt-10 text-white font-extrabold tracking-tight lg:text-3xl text-xl gap-10 w-auto">
           <motion.h1
-            className="font-extrabold tracking-tight lg:text-5xl text-4xl"
+            className="font-extrabold tracking-tight lg:text-5xl text-4xl ml-6"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
