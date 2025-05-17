@@ -4,13 +4,13 @@ import ExperienceItem from "./ExperienceItem";
 import pharma from "./animations/pharmacy.json";
 import museum from "./animations/museum.json";
 import research from "./animations/research.json";
-import residence from "./animations/residence.json";
+import lab from "./animations/lab.json"
 
 export default function Experience(props) {
   return (
     <>
       {props.condition === "#EXPERIENCE" ? (
-        <div className="flex flex-col ml-6 mt-10 text-white font-extrabold tracking-tight lg:text-3xl text-xl gap-10">
+        <div className="flex flex-col justify-center align-center md:justify-normal md:ml-6 mt-10 text-white font-extrabold tracking-tight lg:text-3xl text-xl gap-10 w-auto">
           <motion.h1
             className="font-extrabold tracking-tight lg:text-5xl text-4xl"
             initial={{ opacity: 0, x: -100 }}
@@ -26,7 +26,21 @@ export default function Experience(props) {
               here
             </a>
           </motion.h1>
-          <div className="grid lg:grid-cols-2 justify-center gap-8 py-2">
+          <div className="grid lg:grid-cols-2 justify-center align-center gap-8 py-2 px-3">
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-fit"
+            >
+              <ExperienceItem
+                description="At PolySense, I work in a dual role combining operations and full-stack development, where I enhanced internal tools, improved platform reliability, and delivered several key features across our Django and JavaScript stack. I collaborated closely with product and engineering teams to streamline workflows, optimize data handling, and maintain frontend-backend consistency. One of my most impactful contributions was building a full-featured annotation and reporting system for amCharts, allowing precise data tracking, editing, and exporting—improving user insight and platform usability across clients."
+                name="PolySense Solutions"
+                date="January 2025 - Present"
+                position="Operations & Technical Specialist"
+                animation={lab}
+              />
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -40,6 +54,7 @@ export default function Experience(props) {
                 animation={pharma}
               />
             </motion.div>
+            
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -64,19 +79,6 @@ export default function Experience(props) {
                 date="October 2022 - April 2023"
                 position="Software Developer"
                 animation={research}
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            >
-              <ExperienceItem
-                description="As a Senior Resident Advisor at the University of Manitoba, I led the design and execution of engaging programs for the Residence community, aligning with the Residence Life Programming Model to foster connection and inclusion. I also mentored and supported Resident Advisors and Residential Assistants, promoting teamwork and personal growth while building a strong, cohesive community through leadership initiatives."
-                name="University of Manitoba"
-                date="August 2022 - April 2024"
-                position="Senior Resident Advisor"
-                animation={residence}
               />
             </motion.div>
           </div>

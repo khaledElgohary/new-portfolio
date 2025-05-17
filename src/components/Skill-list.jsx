@@ -14,7 +14,7 @@ export default function SkillList({ skills, tooltip }) {
                     <div className="bg-white rounded-xl p-4 transition-all duration-300 
                                   transform hover:scale-105 hover:bg-web-m 
                                   flex items-center justify-center
-                                  shadow-lg hover:shadow-xl">
+                                  shadow-lg hover:shadow-xl h-[100px]">
                         
                         <TooltipProvider className="">
                         <Tooltip delayDuration={10} >
