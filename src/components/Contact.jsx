@@ -98,7 +98,7 @@ export default function Contact(props) {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-4xl mx-auto px-6 py-12"
+                    className="flex flex-col  min-h-[calc(100vh-80px)] justify-center items-center"
                 >
                     <h1 className="font-extrabold tracking-tight text-4xl md:text-5xl text-white text-center mb-8">
                         Let's Connect
@@ -117,7 +117,7 @@ export default function Contact(props) {
                         </p>
                     </div>
 
-                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-gray-700">
+                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-gray-700 min-w-">
                         <form onSubmit={sendEmail} className="space-y-6">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
