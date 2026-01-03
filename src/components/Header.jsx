@@ -8,6 +8,7 @@ import Experience from './Experience';
 import Contact from './Contact';
 
 export default function Header() {
+
     const [activeHref, setActiveHref] = useState('#ABOUT');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -25,62 +26,77 @@ export default function Header() {
     };
 
     return (
-        <div className="min-h-screen grid grid-rows-[auto_1fr]">
-            <header className="sticky top-0 z-30 bg-black">
-                <div className='flex flex-col w-full bg-header-back'>
-                    <div className='flex flex-row justify-between items-center'>
-                        <h1 className="scroll-m-20 text-xl font-extrabold tracking-tight text-white py-5 px-6 opacity-100">
-                            KE.
-                        </h1>
-                        <Button 
-                            variant="ghost" 
-                            className="lg:hidden px-6 hover:bg-transparent scroll-m-20"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        >
-                            {isMenuOpen ? (
-                                <X className="h-6 w-6 text-white" />
-                            ) : (
-                                <Menu className="h-6 w-6 text-white" />
-                            )}
-                        </Button>
+        <div className="min-h-screen">
+            <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
+                <div className='flex flex-row justify-between items-center px-6 h-20'>
+                    <h1 className="text-xl font-extrabold tracking-tight text-white">
+                        KE.
+                    </h1>
 
-                        <div className='hidden lg:flex py-5 px-2 gap-4 scroll-m-20 text-xl font-extrabold tracking-tight'>
-                            {navItems.map((item) => (
-                                <Button
-                                    key={item.href}
-                                    variant="ghost"
-                                    className={`bg-transparent w-20 !px-5 hover:text-web-m hover:scale-110 hover:bg-gray-800  ${activeHref === item.href ? "text-web-m scale-110 bg-gray-800" : "text-white"}`}
-                                    onClick={() => handleNavClick(item.href)}
-                                >
-                                    <a href={item.href}>{item.label}</a>
-                                </Button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div 
-                        className={`lg:hidden overflow-hidden transition-all duration-300 ${
-                            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                        }`}
+                    <Button 
+                        variant="ghost" 
+                        className="lg:hidden hover:bg-transparent"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
-                        <div className="flex flex-col py-10 items-center pb-4 pr-5">
-                            {navItems.map((item) => (
-                                <Button
-                                    key={item.href}
-                                    variant="ghost"
-                                    className={`w-full justify-center hover:text-web-m hover:scale-105 hover:bg-transparent 
-                                        ${activeHref === item.href ? "text-web-m scale-105" : "text-white"}`}
-                                    onClick={() => handleNavClick(item.href)}
-                                >
-                                    <a href={item.href}>{item.label}</a>
-                                </Button>
-                            ))}
-                        </div>
-                    </div>
+                        {isMenuOpen ? (
+                            <X className="h-6 w-6 text-white" />
+                        ) : (
+                            <Menu className="h-6 w-6 text-white" />
+                        )}
+                    </Button>
+
+                    <nav className='hidden lg:flex gap-2'>
+                        {navItems.map((item) => (
+                            <Button
+                                key={item.href}
+                                variant="ghost"
+                                className={`px-6 transition-all duration-300 hover:text-web-m hover:scale-105 hover:bg-gray-800/50 ${
+                                    activeHref === item.href 
+                                        ? "text-web-m scale-105 bg-gray-800/50" 
+                                        : "text-white"
+                                }`}
+                                onClick={() => handleNavClick(item.href)}
+                            >
+                                {item.label}
+                            </Button>
+                        ))}
+                    </nav>
                 </div>
+
+                <div 
+                    className={`lg:hidden fixed top-20 left-0 right-0 bg-black/90 backdrop-blur-md border-b border-gray-800 transition-all duration-300 ${
+                        isMenuOpen 
+                            ? 'opacity-100 translate-y-0 pointer-events-auto' 
+                            : 'opacity-0 -translate-y-4 pointer-events-none'
+                    }`}
+                >
+                    <nav className="flex flex-col py-4 px-6 gap-2">
+                        {navItems.map((item) => (
+                            <Button
+                                key={item.href}
+                                variant="ghost"
+                                className={`w-full justify-center py-6 text-lg transition-all duration-300 hover:text-web-m hover:bg-gray-800/50 ${
+                                    activeHref === item.href 
+                                        ? "text-web-m bg-gray-800/50" 
+                                        : "text-white"
+                                }`}
+                                onClick={() => handleNavClick(item.href)}
+                            >
+                                {item.label}
+                            </Button>
+                        ))}
+                    </nav>
+                </div>
+
+                {isMenuOpen && (
+                    <div 
+                        className="lg:hidden fixed inset-0 top-20 bg-black/50 backdrop-blur-sm z-40"
+                        onClick={() => setIsMenuOpen(false)}
+                    />
+                )}
             </header>
 
-            <main>
+            <main className="pt-20">
                 <Introduction condition={activeHref} setCondition={setActiveHref}/>
                 <Projects condition={activeHref} />
                 <Skills condition={activeHref} />

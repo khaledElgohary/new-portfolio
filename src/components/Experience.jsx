@@ -4,18 +4,18 @@ import ExperienceItem from "./ExperienceItem";
 import pharma from "./animations/pharmacy.json";
 import museum from "./animations/museum.json";
 import research from "./animations/research.json";
-import lab from "./animations/lab.json"
+import lab from "./animations/lab.json";
 
-import { useEffect} from "react";
-
+import { useEffect } from "react";
+import { useAnimateOnce } from "./hooks/useAnimateOnce";
 
 export default function Experience(props) {
-  
+
+  const controls = useAnimateOnce(props.condition === "#EXPERIENCE");
+
   useEffect(() => {
-          window.scrollTo(0,0)
-      }, [props.condition])
-
-
+    window.scrollTo(0, 0);
+  }, [props.condition]);
   return (
     <>
       {props.condition === "#EXPERIENCE" ? (
@@ -53,7 +53,7 @@ export default function Experience(props) {
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay:0.4 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
               <ExperienceItem
                 description="At Caremate, I'm working as a Frontend Developer, where I optimized React components, boosted performance, and launched five new features in collaboration with the UI/UX and development team. I played a key role in planning, code reviews, and managing merge requests, ensuring seamless integration between frontend and backend systems. One of my proudest achievements was designing and implementing a customer communication framework using Postmark for email automation, cutting feedback and issue resolution time by 60%."
@@ -63,7 +63,7 @@ export default function Experience(props) {
                 animation={pharma}
               />
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}

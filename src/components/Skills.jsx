@@ -1,27 +1,53 @@
 import PropTypes from "prop-types";
-import { motion } from "framer-motion"; // Import motion from framer-motion
+import { motion } from "framer-motion";
 import SkillList from "./Skill-list";
 import { useEffect } from "react";
+import { useAnimateOnce } from "./hooks/useAnimateOnce";
 
 export default function Skills(props) {
+  const controls = useAnimateOnce(props.condition === "#SKILLS");
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   useEffect(() => {
-          window.scrollTo(0,0)
-      }, [props.condition])
-      
+    window.scrollTo(0, 0);
+  }, [props.condition]);
+
   return (
     <>
       {props.condition === "#SKILLS" ? (
-        <div className="grid lg:grid-cols-2 mt-10 gap-10 z-0">
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="flex flex-col items-center">
-              <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">
-                Software Development
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={containerVariants}
+          className="flex flex-col w-full py-10 gap-16 min-h-[calc(100vh-80px)] px-4"
+        >
+          <motion.div variants={sectionVariants}>
+            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
+              <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
+                Programming Languages
               </h1>
-              <hr className="my-3 w-1/3 border-web-m border-2" />
+              <hr className="w-52 border-web-m border-2 mb-6" />
               <SkillList
                 skills={[
                   "python.svg",
@@ -47,16 +73,12 @@ export default function Skills(props) {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }} 
-          >
-            <div className="flex flex-col items-center">
-              <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">
+          <motion.div variants={sectionVariants}>
+            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
+              <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
                 Web Development
               </h1>
-              <hr className="my-3 w-1/3 border-web-m border-2" />
+              <hr className="w-52 border-web-m border-2 mb-6" />
               <SkillList
                 skills={[
                   "javascript.svg",
@@ -78,7 +100,7 @@ export default function Skills(props) {
                   "React",
                   "Angular",
                   "Next.js",
-                  "JQuery",
+                  "jQuery",
                   "TailwindCSS",
                   "Flask",
                 ]}
@@ -86,16 +108,12 @@ export default function Skills(props) {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }} 
-          >
-            <div className="flex flex-col items-center">
-              <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">
+          <motion.div variants={sectionVariants}>
+            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
+              <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
                 Data Analytics
               </h1>
-              <hr className="my-3 w-1/3 border-web-m border-2" />
+              <hr className="w-52 border-web-m border-2 mb-6" />
               <SkillList
                 skills={[
                   "RStudio.svg",
@@ -123,16 +141,12 @@ export default function Skills(props) {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }} 
-          >
-            <div className="flex flex-col items-center">
-              <h1 className="lg:text-2xl text-xl ml-6 text-white font-extrabold">
+          <motion.div variants={sectionVariants}>
+            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
+              <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
                 Databases, Tools & Technologies
               </h1>
-              <hr className="my-3 w-1/3 border-web-m border-2" />
+              <hr className="w-52 border-web-m border-2 mb-6" />
               <SkillList
                 skills={[
                   "aws.svg",
@@ -161,7 +175,7 @@ export default function Skills(props) {
               />
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       ) : (
         <></>
       )}
