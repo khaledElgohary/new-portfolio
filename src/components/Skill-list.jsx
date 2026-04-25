@@ -16,17 +16,15 @@ export default function SkillList({ skills, tooltip }) {
   };
 
   return (
-    <div className="flex flex-wrap justify-start items-center gap-4 lg:gap-6 px-4 py-6 max-w-7xl mx-auto">
+    <div className="flex flex-wrap justify-start items-center gap-4 lg:gap-6 py-6 w-full">
       {skills.map((skill, index) => (
         <motion.div
           key={index}
           variants={itemVariants}
-          whileHover={{ scale: 1.05, y: -5 }}
-          whileTap={{ scale: 0.95 }}
           className="group relative"
         >
           <div
-            className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 
+            className="bg-gray-900/80 border border-gray-700 
                          rounded-2xl transition-all duration-300 
                          hover:border-web-m hover:shadow-lg hover:shadow-web-m/20
                          h-[140px] w-[160px] cursor-pointer

@@ -40,11 +40,11 @@ export default function Skills(props) {
           initial="hidden"
           animate={controls}
           variants={containerVariants}
-          className="flex flex-col w-full py-10 gap-16 min-h-[calc(100vh-80px)] px-4"
+          className="flex flex-col w-full py-10 gap-16 min-h-[calc(100vh-80px)] px-4 max-w-7xl mx-auto"
         >
           <motion.div variants={sectionVariants}>
-            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
-              <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
+            <div className="flex flex-col items-start w-full max-w-7xl">
+              <h1 className="lg:text-2xl text-xl text-white font-extrabold  mb-3">
                 Programming Languages
               </h1>
               <hr className="w-52 border-web-m border-2 mb-6" />
@@ -52,64 +52,56 @@ export default function Skills(props) {
                 skills={[
                   "python.svg",
                   "java.svg",
-                  "C.svg",
+                  "javascript.svg",
+                  "typescript-icon.svg",
                   "c-plusplus.svg",
+                  "c-sharp.svg",
                   "android-icon.svg",
-                  "JUnit.svg",
-                  "docker-icon.svg",
-                  "git-icon.svg",
                 ]}
                 tooltip={[
                   "Python",
                   "Java",
-                  "C",
+                  "JavaScript",
+                  "TypeScript",
                   "C++",
+                  "C#",
                   "Android Studio",
-                  "JUnit",
-                  "Docker",
-                  "Git",
                 ]}
               />
             </div>
           </motion.div>
 
           <motion.div variants={sectionVariants}>
-            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
+            <div className="flex flex-col items-start w-full max-w-7xl">
               <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
                 Web Development
               </h1>
               <hr className="w-52 border-web-m border-2 mb-6" />
               <SkillList
                 skills={[
-                  "javascript.svg",
-                  "typescript-icon.svg",
                   "html-5.svg",
                   "css-3.svg",
                   "react.svg",
-                  "angular-icon.svg",
                   "nextjs-icon.svg",
-                  "jquery.svg",
                   "tailwindcss-icon.svg",
                   "flask.svg",
+                  "django-icon.svg"
                 ]}
                 tooltip={[
-                  "JavaScript",
-                  "TypeScript",
                   "HTML",
                   "CSS",
                   "React",
-                  "Angular",
                   "Next.js",
-                  "jQuery",
                   "TailwindCSS",
                   "Flask",
+                  "Django"
                 ]}
               />
             </div>
           </motion.div>
 
           <motion.div variants={sectionVariants}>
-            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
+            <div className="flex flex-col items-start w-full max-w-7xl">
               <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
                 Data Analytics
               </h1>
@@ -119,30 +111,24 @@ export default function Skills(props) {
                   "RStudio.svg",
                   "numpy.svg",
                   "pandas-icon.svg",
-                  "matplotlib-icon.svg",
-                  "seaborn-icon.svg",
                   "microsoft-power-bi.svg",
                   "tableau-icon.svg",
                   "SSIS.svg",
-                  "databricks.svg",
                 ]}
                 tooltip={[
                   "RStudio",
                   "Numpy",
                   "Pandas",
-                  "Matplotlib",
-                  "Seaborn",
                   "PowerBI",
                   "Tableau",
                   "SSIS",
-                  "Databricks",
                 ]}
               />
             </div>
           </motion.div>
 
           <motion.div variants={sectionVariants}>
-            <div className="flex flex-col items-start max-w-7xl mx-auto w-full">
+            <div className="flex flex-col items-start w-full max-w-7xl">
               <h1 className="lg:text-2xl text-xl text-white font-extrabold mb-3">
                 Databases, Tools & Technologies
               </h1>
@@ -150,27 +136,27 @@ export default function Skills(props) {
               <SkillList
                 skills={[
                   "aws.svg",
-                  "microsoft-azure.svg",
                   "jira.svg",
                   "linear-icon.svg",
                   "bash-icon.svg",
                   "selenium.svg",
-                  "cypress-icon.svg",
                   "mysql-icon.svg",
                   "postgresql.svg",
                   "neo4j.svg",
+                  "docker-icon.svg",
+                  "git-icon.svg",
                 ]}
                 tooltip={[
                   "AWS",
-                  "Azure",
                   "Jira",
                   "Linear",
                   "Bash",
                   "Selenium",
-                  "Cypress",
-                  "SQL",
+                  "MySQL",
                   "PostgreSQL",
                   "Neo4j",
+                  "Docker",
+                  "Git",
                 ]}
               />
             </div>

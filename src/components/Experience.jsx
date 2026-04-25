@@ -5,93 +5,108 @@ import pharma from "./animations/pharmacy.json";
 import museum from "./animations/museum.json";
 import research from "./animations/research.json";
 import lab from "./animations/lab.json";
-
 import { useEffect } from "react";
 import { useAnimateOnce } from "./hooks/useAnimateOnce";
 
 export default function Experience(props) {
-
   const controls = useAnimateOnce(props.condition === "#EXPERIENCE");
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [props.condition]);
+
+  const experiences = [
+    {
+      name: "PolySense Solutions",
+      position: "Software Developer & Operations Specialist",
+      date: "January 2025 – Present",
+      animation: lab,
+      description:
+        "At PolySense Solutions, I design and deliver full-stack features across a Django and JavaScript IoT platform — improving application response times from 10s to 90ms through SQL optimization and N+1 query fixes, growing unit test coverage from 30% to 75%, and building Python/NumPy data ingestion pipelines to streamline client onboarding and reduce manual coordination by over 50%",
+    },
+    {
+      name: "Caremate",
+      position: "Frontend Developer",
+      date: "May 2024 – Present",
+      animation: pharma,
+      description:
+        "At Caremate, I optimized React components, boosted performance, and launched 6 new features in collaboration with the UI/UX and development team. I played a key role in planning, code reviews, and managing merge requests, ensuring seamless integration between frontend and backend systems. One of my proudest achievements was designing a customer communication framework using Postmark for email automation, cutting feedback and issue resolution time by 60%.",
+    },
+    {
+      name: "Canadian Museum for Human Rights",
+      position: "Software Developer",
+      date: "Dec 2023 – April 2024",
+      animation: museum,
+      description:
+        "As part of my university's co-op alternative program, I collaborated with the Canadian Museum for Human Rights to develop a fully local speech-to-text model featuring live transcription, automatic language detection, and seamless language switching. I fine-tuned a BERT-based model to achieve 90% accuracy with limited data and containerized the application using Docker, reducing deployment time by over 40%.",
+    },
+    {
+      name: "Pacific Institute for the Mathematical Sciences",
+      position: "Data Analyst",
+      date: "October 2022 – April 2023",
+      animation: research,
+      description:
+        "As a Data Analyst at PIMS, I worked with R to create visualizations and analyze data patterns. I used Python and NumPy for data collection and manipulation, and wrote research reports in LaTeX to present findings with precision and clarity.",
+    },
+  ];
+
   return (
     <>
       {props.condition === "#EXPERIENCE" ? (
-        <div className="flex flex-col justify-center align-center md:justify-normal md:ml-6 mt-10 text-white font-extrabold tracking-tight lg:text-3xl text-xl gap-10 w-auto">
-          <motion.h1
-            className="font-extrabold tracking-tight lg:text-5xl text-4xl ml-6"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            You can download my resume from{" "}
-            <a
-              href="/resume.pdf"
-              className="text-web-m underline cursor-pointer"
-              download={true}
-            >
-              here
-            </a>
-          </motion.h1>
-          <div className="grid lg:grid-cols-2 justify-center align-center gap-8 py-2 px-3">
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="w-fit"
-            >
-              <ExperienceItem
-                description="At PolySense, I work in a dual role combining operations and full-stack development, where I enhanced internal tools, improved platform reliability, and delivered several key features across our Django and JavaScript stack. I collaborated closely with product and engineering teams to streamline workflows, optimize data handling, and maintain frontend-backend consistency. One of my most impactful contributions was building a full-featured annotation and reporting system for amCharts, allowing precise data tracking, editing, and exporting—improving user insight and platform usability across clients."
-                name="PolySense Solutions"
-                date="January 2025 - Present"
-                position="Operations & Technical Specialist"
-                animation={lab}
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <ExperienceItem
-                description="At Caremate, I'm working as a Frontend Developer, where I optimized React components, boosted performance, and launched five new features in collaboration with the UI/UX and development team. I played a key role in planning, code reviews, and managing merge requests, ensuring seamless integration between frontend and backend systems. One of my proudest achievements was designing and implementing a customer communication framework using Postmark for email automation, cutting feedback and issue resolution time by 60%."
-                name="Caremate"
-                date="May 2024 - Present"
-                position="Frontend Developer"
-                animation={pharma}
-              />
-            </motion.div>
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={containerVariants}
+          className="flex flex-col w-full py-10 gap-10 min-h-[calc(100vh-80px)] px-4 max-w-7xl mx-auto"
+        >
+          <motion.div variants={itemVariants} className="flex flex-col gap-2">
+            <p className="text-web-m text-sm font-semibold tracking-widest uppercase">
+              My Journey
+            </p>
+            <h1 className="text-white font-extrabold tracking-tight lg:text-5xl text-4xl leading-tight">
+              Experience
+            </h1>
+            <p className="text-gray-400 text-base mt-1">
+              You can download my resume from{" "}
+              <a
+                href="/resume.pdf"
+                download
+                className="text-web-m underline underline-offset-4 hover:text-cyan-400 transition-colors duration-200"
+              >
+                here
+              </a>
+              .
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <ExperienceItem
-                description="As part of my university's co-op alternative program, I collaborated with the Canadian Museum for Human Rights on an industrial project to develop a fully local speech-to-text model. The system featured live transcription, automatic language detection, and seamless language switching. I fine-tuned a BERT-based model to achieve 90% accuracy with limited data and containerized the application using Docker, reducing deployment time by over 40%."
-                name="Canadian Museum for Human Rights"
-                date="Dec 2023 - April 2024"
-                position="Software Developer"
-                animation={museum}
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 1.2 }}
-            >
-              <ExperienceItem
-                description="As a Data Analyst at the Pacific Institute for the Mathematical Sciences, I worked with R to create visualizations and analyze data patterns. I used Python and Numpy for data collection and manipulation and wrote research reports in LaTeX to present findings with precision and clarity."
-                name="Pacific Institute for the Mathematical Sciences"
-                date="October 2022 - April 2023"
-                position="Software Developer"
-                animation={research}
-              />
-            </motion.div>
-          </div>
-        </div>
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-fr"
+          >
+            {experiences.map((exp, index) => (
+              <motion.div key={index} variants={itemVariants} className="h-full">
+                <ExperienceItem {...exp} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       ) : (
         <></>
       )}

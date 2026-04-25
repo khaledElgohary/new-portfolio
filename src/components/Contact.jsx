@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/tooltip";
 import emailjs from '@emailjs/browser';
 import { useState } from "react";
+import { useAnimateOnce } from "./hooks/useAnimateOnce";
 
 const CustomAlert = ({ message, type, onClose }) => (
   <motion.div
@@ -38,6 +39,25 @@ CustomAlert.propTypes = {
 };
 
 export default function Contact(props) {
+    const controls = useAnimateOnce(props.condition === "#CONTACT");
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.15 },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" },
+        },
+    };
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -46,9 +66,7 @@ export default function Contact(props) {
 
     const showAlert = (message, type) => {
         setAlert({ message, type });
-        setTimeout(() => {
-            setAlert(null);
-        }, 5000);
+        setTimeout(() => setAlert(null), 5000);
     };
 
     const sendEmail = async (e) => {
@@ -68,7 +86,6 @@ export default function Contact(props) {
                 templateParams, 
                 'qyEmFbnVZ-Tzjlou_'
             );
-            
             showAlert("Message sent successfully! I'll get back to you soon.", 'success');
             setName("");
             setEmail("");
@@ -95,16 +112,19 @@ export default function Contact(props) {
 
             {props.condition === "#CONTACT" ? (
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="flex flex-col  min-h-[calc(100vh-80px)] justify-center items-center"
+                    initial="hidden"
+                    animate={controls}
+                    variants={containerVariants}
+                    className="flex flex-col min-h-[calc(100vh-80px)] justify-center items-center"
                 >
-                    <h1 className="font-extrabold tracking-tight text-4xl md:text-5xl text-white text-center mb-8">
+                    <motion.h1
+                        variants={itemVariants}
+                        className="font-extrabold tracking-tight text-4xl md:text-5xl text-white text-center mb-8"
+                    >
                         Let's Connect
-                    </h1>
+                    </motion.h1>
                     
-                    <div className="text-center mb-12">
+                    <motion.div variants={itemVariants} className="text-center mb-12">
                         <p className="text-gray-300 text-lg max-w-2xl mx-auto">
                             Feel free to check out my{" "}
                             <a
@@ -115,16 +135,14 @@ export default function Contact(props) {
                             </a>{" "}
                             or drop me a message below. I'm always open to new opportunities and connections!
                         </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-gray-700 min-w-">
+                    <motion.div
+                        variants={itemVariants}
+                        className="bg-gray-900/80 backdrop-blur-sm rounded-xl p-8 shadow-2xl border border-gray-700 w-full max-w-2xl"
+                    >
                         <form onSubmit={sendEmail} className="space-y-6">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                                className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                            >
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label htmlFor="nameInput" className="block text-white text-sm font-medium">
                                         Name
@@ -135,7 +153,7 @@ export default function Contact(props) {
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                         required
-                                        className="w-full rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/20 p-3 text-white transition-all"
+                                        className="w-full rounded-lg bg-gray-700/40 border border-gray-600 focus:border-web-m focus:ring focus:ring-web-m/20 p-3 text-white transition-all outline-none"
                                         placeholder="Your name"
                                         disabled={isSubmitting}
                                     />
@@ -150,25 +168,20 @@ export default function Contact(props) {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
-                                        className="w-full rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/20 p-3 text-white transition-all"
+                                        className="w-full rounded-lg bg-gray-700/40 border border-gray-600 focus:border-web-m focus:ring focus:ring-web-m/20 p-3 text-white transition-all outline-none"
                                         placeholder="your.email@example.com"
                                         disabled={isSubmitting}
                                     />
                                 </div>
-                            </motion.div>
+                            </div>
                             
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                                className="space-y-2"
-                            >
+                            <div className="space-y-2">
                                 <label htmlFor="messageInput" className="block text-white text-sm font-medium">
                                     Message
                                 </label>
                                 <textarea 
                                     id="messageInput" 
-                                    className="w-full rounded-lg bg-gray-700 border border-gray-600 focus:border-blue-500 focus:ring focus:ring-blue-500/20 p-3 text-white transition-all" 
+                                    className="w-full rounded-lg bg-gray-700/40 border border-gray-600 focus:border-web-m focus:ring focus:ring-web-m/20 p-3 text-white transition-all outline-none resize-none" 
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     required
@@ -176,22 +189,17 @@ export default function Contact(props) {
                                     placeholder="What would you like to discuss?"
                                     disabled={isSubmitting}
                                 />
-                            </motion.div>
+                            </div>
                             
-                            <motion.div   
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.6 }}
-                                className="flex justify-center pt-4"
-                            >
+                            <div className="flex justify-center pt-2">
                                 <button 
                                     type="submit" 
-                                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:ring-blue-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="px-8 py-3 bg-blue-900/20 text-white font-medium rounded-lg shadow-lg hover:bg-blue-900/80 focus:ring-4 focus:ring-web-m/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                     disabled={isSubmitting}
                                 >
                                     {isSubmitting ? (
                                         <span className="flex items-center gap-2">
-                                            <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                             </svg>
@@ -199,82 +207,45 @@ export default function Contact(props) {
                                         </span>
                                     ) : "Send Message"}
                                 </button>
-                            </motion.div>
+                            </div>
                         </form>
-                    </div>
+                    </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.8 }}
+                        variants={itemVariants}
                         className="mt-12 flex flex-wrap justify-center gap-6 items-center"
                     >
                         <div className="flex gap-6">
                             <TooltipProvider>
                                 <Tooltip delayDuration={10}>
                                     <TooltipTrigger>
-                                        <a
-                                            href="https://www.linkedin.com/in/khaled-elgohary2002/"
-                                            target="_blank"
-                                            className=" p-3 rounded-full "
-                                        >
-                                            <img
-                                                src="/linkedin-icon.svg"
-                                                width={28}
-                                                height={28}
-                                                alt="LinkedIn"
-                                                className="hover:scale-110 transition-transform"
-                                            />
+                                        <a href="https://www.linkedin.com/in/khaled-elgohary2002/" target="_blank" rel="noreferrer">
+                                            <img src="/linkedin-icon.svg" width={28} height={28} alt="LinkedIn" className="hover:scale-110 transition-transform" />
                                         </a>
                                     </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p>LinkedIn</p>
-                                    </TooltipContent>
+                                    <TooltipContent><p>LinkedIn</p></TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
 
                             <TooltipProvider>
                                 <Tooltip delayDuration={10}>
                                     <TooltipTrigger>
-                                        <a 
-                                            href="https://github.com/khaledElgohary" 
-                                            target="_blank"
-                                            className="p-3 rounded-full "
-                                        >
-                                            <img
-                                                src="/github-icon2.svg"
-                                                width={28}
-                                                height={28}
-                                                alt="GitHub"
-                                                className="hover:scale-110 transition-transform"
-                                            />
+                                        <a href="https://github.com/khaledElgohary" target="_blank" rel="noreferrer">
+                                            <img src="/github-icon2.svg" width={28} height={28} alt="GitHub" className="hover:scale-110 transition-transform" />
                                         </a>
                                     </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p>GitHub</p>
-                                    </TooltipContent>
+                                    <TooltipContent><p>GitHub</p></TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
 
                             <TooltipProvider>
                                 <Tooltip delayDuration={10}>
                                     <TooltipTrigger>
-                                        <a 
-                                            href="mailto:khaled.dev1010@gmail.com"
-                                            className=" p-3 rounded-full transition-colors "
-                                        >
-                                            <img
-                                                src="/google-gmail.svg"
-                                                width={28}
-                                                height={28}
-                                                alt="Email"
-                                                className="hover:scale-110 transition-transform"
-                                            />
+                                        <a href="mailto:khaled.dev1010@gmail.com">
+                                            <img src="/google-gmail.svg" width={28} height={28} alt="Email" className="hover:scale-110 transition-transform" />
                                         </a>
                                     </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p>Email</p>
-                                    </TooltipContent>
+                                    <TooltipContent><p>Email</p></TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
                         </div>
@@ -282,7 +253,7 @@ export default function Contact(props) {
                         <a
                             href="/resume.pdf"
                             download="Khaled_Resume.pdf"
-                            className="px-6 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors flex items-center gap-2 shadow-md hover:bg-gray-300"
+                            className="px-6 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-300 transition-colors flex items-center gap-2 shadow-md"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
